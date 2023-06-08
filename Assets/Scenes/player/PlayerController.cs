@@ -4,12 +4,14 @@ using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
+
 {
     // Start is called before the first frame update
     Vector3 dir = Vector3.zero;//ˆÚ“®•ûŒü‚ğ•Û‘¶‚·‚é•Ï”
+    Animator anim;
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,5 +27,18 @@ public class PlayerController : MonoBehaviour
         pos.x = Mathf.Clamp(pos.x, -9, 9f);
         pos.y = Mathf.Clamp(pos.y, -5, 5f);
         transform.position = pos;
+
+        if(dir.y == 0)
+        {
+            anim.Play("Player");
+        }
+        else if(dir.y == 1)
+        {
+            anim.Play("Playerl");
+        }
+        else if (dir.y == -1)
+        {
+            anim.Play("playerr");
+        }
     }
 }
